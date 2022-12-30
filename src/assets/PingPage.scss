@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap');
+
+$blue: #4f7df3;
+$pale-blue:#c2d3ff;
+$light-red:#ff5263;
+$gray: #969696;
+$very-dark-blue: #151f29;
+
+@mixin vertical-gap($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap
+}
+
+.PingPage {
+  font-family: 'Libre Franklin', sans-serif;
+  text-align: center;
+  color: $very-dark-blue;
+  max-width: 600px;
+  width: 80vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  header {
+    padding-top: 10vh;
+    padding-bottom: 20px
+  }
+  main {
+    @include vertical-gap(60px);
+    .content {
+      @include vertical-gap(30px);
+      div {
+        @include vertical-gap(15px);
+        h1 {
+          font-size: 1.2rem;
+          span {
+            color: $gray;
+            font-weight: 300;
+          }
+        }
+        p {
+          font-size: 0.75rem;
+        }
+      }
+      form {
+        @include vertical-gap(10px);
+        justify-content: space-between;
+        div {
+          width: 100%;
+          input[type=text] {
+            height: 37px;
+            border-radius: 50px;
+            border: 2px solid $pale-blue;
+            padding-left: 20px;
+            &:focus {
+              transition: 0.5s;
+              border: 2px solid $blue;
+              outline: none;
+            }
+            &.error {
+              border: 2px solid $light-red;
+              &:focus {
+                border: 2px solid $light-red;
+              }
+            }
+          }
+          p {
+            visibility: hidden;
+            margin-top: -10px;
+            color: $light-red;
+            font-style: italic;
+            font-size: 0.5rem;
+            text-align: left;
+            padding-left: 20px;
+            &.error {
+              visibility: visible;
+            }
+          }
+        }
+        button {
+          background-color: $blue;
+          border: none;
+          border-radius: 50px;
+          color: white;
+          font-weight: 600;
+          height: 40px;
+          min-width: 180px;
+          &:hover {
+            background-color: #{$blue}C0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .main-image {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  footer {
+    padding: 30px;
+    @include vertical-gap(25px);
+    ul {
+      color: $blue;
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      gap: 20px;
+      font-size: 0.7rem;
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        &:hover {
+          color: white;
+          background-color: $blue;
+          cursor: pointer;
+        }
+      }
+    }
+    color: $gray;
+    font-size: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .PingPage {
+    main {
+      .content {
+        div {
+          h1 {
+            font-size: 2rem;
+          }
+          p {
+            font-size: 1rem;
+          }
+        }
+        form {
+          flex-direction: row;
+          div {
+            padding-top: 0;
+            width: 100%;
+            input[type=text] {
+              height: 47px;
+            }
+          }
+          button {
+            height: 50px;
+          }
+        }
+      }
+    }
+    footer {
+      font-size: 0.7rem;
+    }
+  }
+}
